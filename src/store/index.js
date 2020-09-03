@@ -8,6 +8,14 @@ import moduleCart from './cart'
 import moduleProduct from './product'
 
 Vue.use(Vuex)
+
+const localStorage = store => {
+  store.subscribe((mutation, state) => {
+    window.localStorage.setItem('cart',JSON.stringify(state.cart));
+  })
+}
+
+
 const store = new Vuex.Store({
   namespaced: true,
   strict: process.env.NODE_ENV !== 'production',
@@ -18,7 +26,8 @@ const store = new Vuex.Store({
   modules:{
       cart: moduleCart,
       product: moduleProduct,
-  }
+  },
+  plugins: [localStorage]
    
 })
 export default store;

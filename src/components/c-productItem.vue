@@ -31,7 +31,7 @@
 <script>
 import { mapActions } from "vuex";
 import { toCurrency, validateQuantity } from "../helpers";
-import { NOTI_GREATER_THAN_ONE } from "../helpers/config";
+import { NOTI_GREATER_THAN_ONE,NOTI_ACT_ADD } from "../helpers/config";
 export default {
   name: "c-productItem",
   props: {
@@ -63,7 +63,9 @@ export default {
           product: this.item,
         };
         //this.$store.dispatch('actBuyProduct',data);
+        this.quantity = 1;
         this.actBuyProduct(data);
+        this.$notify(NOTI_ACT_ADD);
       } else {
         this.$notify(NOTI_GREATER_THAN_ONE);
       }

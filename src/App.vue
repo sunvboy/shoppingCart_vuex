@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-   <div class="container">
+   <div class="container" >
+    <c-loading :class="{showLoading : isloading}"></c-loading>
+
 		<!-- TITLE : START -->
 		<c-title></c-title>
 		<!-- TITLE : END -->
@@ -20,19 +22,22 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import CTitle from './components/c-title';
 import CProduct from './components/c-product';
 import CCart from './components/c-cart';
+import CLoading from './components/c-loading';
 export default {
   name: 'app',
   components:{
-    CTitle,CProduct,CCart
+    CTitle,CProduct,CCart,CLoading
   },
   data () {
     return {
      
     }
-  }
+  },
+  computed: mapState(['isloading'])
 }
 </script>
 
